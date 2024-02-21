@@ -1,2 +1,2 @@
 # HackerRank
-My code challenge solutions for HackerRank.om
+My code challenge solutions for HackerRank.com
