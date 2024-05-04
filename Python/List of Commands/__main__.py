@@ -2,7 +2,7 @@ from os import chdir, path
 chdir( path.dirname(__file__) )
 
 from glob import glob
-inputs2d = []
+inputs2d: list[tuple[str, ...]] = []
 
 for filename in glob('input*.txt'):
     with open(filename) as file:
@@ -25,11 +25,10 @@ inp_len = len(inputs2d)
 row = idx = 0
 
 from importlib import import_module
+from collections.abc import Callable
 
 module = import_module('main')
-main = getattr(module, 'main', None)
+main: Callable[[None], None] = getattr(module, 'main', None)
 
 if callable(main):
-    for i in range(inp_len - 1, -1, -1):
-        main()
-        i and print()
+    for i in range(inp_len - 1, -1, -1): main(); i and print()
